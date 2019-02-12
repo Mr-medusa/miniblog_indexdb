@@ -118,6 +118,7 @@
                 this.readOrEdit.blog.tags = [];
                 if(this.tags && this.tags.trim()){      //修改tags
                     var tags = this.tags.trim().split(" ");
+                    tags = Utils.removeDuplicate(oldTagArr);
                     for (let i = 0; i < tags.length; i++) {
                         if(tags[i].trim()){
                             this.readOrEdit.blog.tags.push(tags[i].trim());
@@ -202,6 +203,10 @@
         },
         watch:{
             'readOrEdit.blog.id':function () {
+                this.oldTagsArr = this.readOrEdit.blog.tags;
+                if(this.readOrEdit.blog.tags && this.readOrEdit.blog.tags.length){
+                    this.tags = this.readOrEdit.blog.tags.join(" ");
+                }
                 if(this.blogEditor){
                     this.blogEditor.setText("");
                     this.blogEditor.enable();

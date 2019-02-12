@@ -114,6 +114,7 @@
                 var myTags = [];
                 if(this.blog.tags && this.blog.tags.trim()){
                     blogTags = this.blog.tags.trim().split(" ");
+                    blogTags = Utils.removeDuplicate(blogTags);
                     for (let i = 0; i < blogTags.length; i++) {
                         if(blogTags[i].trim()){
                             myTags.push(blogTags[i].trim());
