@@ -6,6 +6,10 @@
 
 ### https://mr-medusa.github.io/miniblog_indexdb/
 
+
+
+
+
 删除本地数据库使用这个链接:
 
 ### https://mr-medusa.github.io/miniblog_indexdb/#/delete_miniblog_db
