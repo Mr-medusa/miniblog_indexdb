@@ -4,7 +4,9 @@
 
 该版本使用IndexDB数据库,没有网的时候使用比较方便。
 
-### https://mr-medusa.github.io/miniblog/
+### https://mr-medusa.github.io/miniblog_indexdb/
+
+### 删除本地数据库使用这个链接: https://mr-medusa.github.io/miniblog_indexdb/#/delete_miniblog_db
 
 ## Project setup
 ```
