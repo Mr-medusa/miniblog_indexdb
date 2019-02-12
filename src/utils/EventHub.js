@@ -61,6 +61,7 @@ var EventHub = new Vue({
 
             /*blogs*/
             blogs: [],
+            blogForTags:[],
             blogTags: [],
             blogTagMap: new Map(),
             pageInfo: {

@@ -93,9 +93,10 @@
                             break;
                         }
                     }
-                    this.deletedBlogById(this.operatorBlog.id);
-                    var nextBlog = EventHub.blogs[myPos] >-1 ? EventHub.blogs[myPos] : EventHub.blogs[myPos - 1];
-                    this.readOrEdit.blog = nextBlog;
+
+                    var myBlogs = this.deletedBlogById(this.operatorBlog.id);
+
+                    this.readOrEdit.blog = myBlogs[myPos] || myBlogs[myBlogs.length - 1];
                 }
                 /*********************** VIEW ************************/
 
@@ -106,13 +107,19 @@
                 this.folderAlert = false;
             },
             deletedBlogById(id){
-                var blogs = EventHub.blogs;
-                for (let i = 0; i < blogs.length; i++) {
-                    if(blogs[i].id === id){
+                var myBlogs = [];
+                if(EventHub.blogSearch.isTagsSearch && EventHub.blogSearch.tag){
+                    myBlogs =  EventHub.blogForTags;
+                }else {
+                    myBlogs = EventHub.blogs;
+                }
+                for (let i = 0; i < myBlogs.length; i++) {
+                    if(myBlogs[i].id === id){
                         //删除列表中的日志
-                        blogs.splice(i,1);
+                        myBlogs.splice(i,1);
                     }
                 }
+               return myBlogs;
             },
 
             findSearchPage(){

@@ -656,7 +656,7 @@ export default {
     ],
     blogTags: {
         id: "blogTags",
-        tags: [["标签1", 1], ["标签2", 1], ["标签3", 1], ["标签4", 1],["标签5", 1], ["标签6", 1], ["标签7", 1], ["标签8", 1],["标签9", 1], ["标签10", 1]],
+        tags: [["标签1", 1], ["标签2", 1], ["标签3", 1], ["标签4", 1],["标签5", 2], ["标签6", 1], ["标签7", 1], ["标签8", 1],["标签9", 1]],
     },
     initBlogTestData: function () {
         for (let i = 0; i < 100; i++) {
@@ -671,7 +671,7 @@ export default {
                 htmlContent: "M的测试数据" + i
             });
         }
-        this.blogTags.tags.push(["标签10",1]);
+        this.blogTags.tags.push(["标签10",100]);
     }
 
 }

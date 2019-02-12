@@ -59,8 +59,12 @@
                 //搜索详细页
                 searchKeys.forEach(function (blog) {
                     BlogService.getBlogContentById(blog.id).then(function (data) {
-                        blog.previewContent = data.previewContent;
-                        that.blogs.push(blog);
+                        if(data){
+                            blog.previewContent = data.previewContent;
+                            that.blogs.push(blog);
+                        }
+                    }).catch(function (arr) {
+                        console.log(arr);
                     });
                 });
 

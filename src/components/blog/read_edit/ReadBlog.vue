@@ -52,56 +52,47 @@
                 this.$emit('readable',this.readOrEdit);
             },
             lastPage(){
-                var myPos = this.findPos(this.readOrEdit.blog);
-                myPos--;
-                var realPos = myPos;
-                if(EventHub.blogSearch.isTagsSearch && EventHub.blogSearch.tag){
-                    realPos = this.findRealPos(myPos);
-                }
-                if(realPos >= 0 && realPos != -1){
-                    EventHub.pageInfo.current = Math.ceil((realPos-1) / EventHub.pageInfo.pagenum);
-                    this.$router.push({ name: 'blogArticle', params: { id: EventHub.blogs[realPos].id, isReadable: true }});
+                var pos = this.findPos(this.readOrEdit.blog);
+                if(pos.id != -1){
+                    var current = Math.ceil((pos.pos-2) / EventHub.pageInfo.pagenum);
+                    EventHub.pageInfo.current = current >= 1 ? current : 1;
+                    this.$router.push({ name: 'blogArticle', params: { id: pos.id, isReadable: true }});
                 }else{
                     EventHub.$emit("goTip",["没有上一篇了!"]);
                 }
             },
             nextPage(){
-                var myPos = this.findPos(this.readOrEdit.blog);
-                myPos++;
-                var realPos = myPos;
-                if(EventHub.blogSearch.isTagsSearch && EventHub.blogSearch.tag){
-                    realPos = this.findRealPos(myPos,"next");
-                }
-                if(realPos < EventHub.blogs.length && realPos != -1){
-                    EventHub.pageInfo.current = Math.ceil((realPos+1) / EventHub.pageInfo.pagenum);
-                    this.$router.push({ name: 'blogArticle', params: { id: EventHub.blogs[realPos].id, isReadable: true }});
+                var pos = this.findPos(this.readOrEdit.blog,"next");
+                if(pos.id != -1){
+                    var current = Math.ceil((pos.pos+2) / EventHub.pageInfo.pagenum);
+                    EventHub.pageInfo.current = current >= 1 ? current : 1;
+                    this.$router.push({ name: 'blogArticle', params: { id: pos.id, isReadable: true }});
                 }else{
                     EventHub.$emit("goTip",["没有下一篇了!"])
                 }
             },
-            findPos(blog){
-                for (let i = 0; i < EventHub.blogs.length; i++) {
-                    if(EventHub.blogs[i].id === blog.id)
-                        return i;
+            findPos(blog,orientation){
+                var me = null,id = null,pos = -1;
+                var blogs = EventHub.blogSearch.isTagsSearch ? EventHub.blogForTags : EventHub.blogs;
+                for (let i = 0; i < blogs.length; i++) {
+                    if(blogs[i].id === blog.id){
+                        pos =  i;
+                        break;
+                    }
                 }
-                return -1;
-            },
-            findRealPos(myPos,orientation){
                 if(orientation === "next"){
-                    for (let i = myPos; i < EventHub.blogs.length; i++) {
-                        if(EventHub.blogs[i] && EventHub.blogs[i].tags.indexOf(EventHub.blogSearch.tag)>-1){
-                           return i;
-                        }
-                    }
+                   me = blogs[pos + 1];
                 }else{
-                    for (let i = myPos; i >= 0; i--) {
-                        if(EventHub.blogs[i] && EventHub.blogs[i].tags.indexOf(EventHub.blogSearch.tag)>-1){
-                            return i;
-                        }
-                    }
+                   me = blogs[pos - 1];
                 }
-                return -1;
+                id  = me ? me.id : -1;
+
+                return {
+                    id:id,
+                    pos:pos
+                };
             },
+
             deleteBlog(){
                 this.$emit('deleteBlog',this.readOrEdit.blog);
             },

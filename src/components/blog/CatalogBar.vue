@@ -185,9 +185,12 @@
                 }else{
                     this.checkTagsState = tag;
                 }
+                //这样做直接屏蔽了数据变异的监视器，为了方便操作直接暴露一个引用给EventHub算了
                 this.blogList = EventHub.blogs.filter(function (v) {
                     return v.tags.indexOf(tag) > -1;
                 });
+                EventHub.blogForTags = this.blogList;
+
                 EventHub.changePageInfo(this.blogList);                 //改变搜索状态时候的分页信息
                 EventHub.changeBlogKeyWord("tag",tag);
                 EventHub.$emit('initBlogsCompleted');
