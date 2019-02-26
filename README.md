@@ -4,12 +4,12 @@
 
 该版本使用IndexDB数据库,没有网的时候使用比较方便。
 #
-# Index 离线版：
+## Index 离线版：
 
 ### https://mr-medusa.github.io/miniblog_indexdb/
  
 #
-# MongDB 版：
+## MongDB 版：
 
 ### https://github.com/Mr-medusa/miniblog_mongo
 #
