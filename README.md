@@ -4,7 +4,7 @@
 
 该版本使用IndexDB数据库,没有网的时候使用比较方便。
 #
-## Index 离线版：
+## IndexDB 离线版：
 
 ### https://mr-medusa.github.io/miniblog_indexdb/
  
