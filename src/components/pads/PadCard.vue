@@ -2,7 +2,7 @@
     <div class="pad-card-container type-area">
         <div class="pad-grid">
             <card v-for="(note,index) in notes"
-                  :key="index"
+                  :key="note.id"
                   :order="index"
                   :card="note"
                   :closeCardMoreAct="closeCardMoreAct"
