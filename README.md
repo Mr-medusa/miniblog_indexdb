@@ -1,27 +1,18 @@
 # MiniBlog
 
 一个简单的博客。 用于所见即所得的日志记录,在线代码编辑。
-
 该版本使用IndexDB数据库,没有网的时候使用比较方便。
-#
+
 ## IndexDB 离线版：
-
-### https://mr-medusa.github.io/miniblog_indexdb/
+https://mr-medusa.github.io/miniblog_indexdb/
  
-#
-## MongDB 版：
-
-### https://github.com/Mr-medusa/miniblog_mongo
-#
-#    
+# MongDB 版：
+https://github.com/Mr-medusa/miniblog_mongo   
 
 删除本地数据库使用这个链接:
 
-### https://mr-medusa.github.io/miniblog_indexdb/#/delete_miniblog_db
+https://mr-medusa.github.io/miniblog_indexdb/#/delete_miniblog_db
 
-#    
-#    
-#    
 
 ## Project setup
 ```
@@ -37,16 +28,3 @@ npm run serve
 ```
 npm run build
 ```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
