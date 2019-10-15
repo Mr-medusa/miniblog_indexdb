@@ -9,7 +9,7 @@ https://mr-medusa.github.io/miniblog_indexdb/
 # MongDB 版：
 https://github.com/Mr-medusa/miniblog_mongo   
 
-删除本地数据库使用这个链接:
+***TIP*** *删除本地数据库使用这个链接:*
 
 https://mr-medusa.github.io/miniblog_indexdb/#/delete_miniblog_db
 
